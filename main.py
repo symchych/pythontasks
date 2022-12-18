@@ -143,48 +143,94 @@ def getstufffromdictionary(list):
 # does proper user validation and give feedback: only numbers allowed
 # Keeps the Calculator program running until the user types "exit"
 # Keeps track of how many calculations the user has taken, and when the user exits the calculator program, prints out the number of calculations the user did
-# Concepts covered: working with different data types, conditionals, type conversion, user input, user input validation
-def exitprogram(value):
-    if value == "exit":
+# Concept covered: working with different data types, conditionals, type conversion, user input, user input validation
+
+
+import sys
+def checking_numbers():
+    num = ""
+    while not num.isdigit():
+        num = input(f"enter number")
+        try:
+            int(num)
+        except ValueError:
+            continue
+        if num == "exit":
+            sys.exit("Thank you for using calculator which was written by Myroslav S on 17.12.2022")
+        else:
+            continue
+
+        while not num.isdigit():
+            warning_number = "only numbers allowed"
+            print(warning_number)
+            num = input(f"enter number")
+            if num == "exit":
+                sys.exit("Thank you for using calculator which was written by Myroslav S on 17.12.2022")
+            else:
+                continue
+    return num
+
+
+
+def checking_action(action):
+    proceeding = False
+    while not proceeding:
+        num = input(f"enter {action}")
+        if num == "exit":
+            sys.exit("Thank you for using calculator which was written by Myroslav S on 17.12.2022")
+        elif  num == "divide":
+            return "/"
+        else:
+            print("You entered a non-existent action. try again!")
+
 
 def calculator():
-    warning = "your number is of an incorrect format"
+    warning_number = "only numbers allowed"
+    warning_action = "unknown action"
+    proceeding = False
+    one = 0
+    two = 0
+
+    print(checking_numbers())
+   # checking_numbers("number two")
+
+
+
+
     # if not isinstance(one, (int, float)):
     #     print(warning)
     # if not isinstance(two, (int, float)):
     #     print(warning)
-    while True:
-        if action == "exit":
-
-        action = input("enter the action")
-        one = input("enter the first number")
-        while not one.isdigit():
-            print(warning)
-            one = input("enter the first number")
-
-
-        two = input("enter the second number")
-        while not two.isdigit():
-            print(warning)
-            two = input("enter the second number")
-
-
-        if action == "divide":
-            print (int(one) / int(two))
-        elif action == "plus":
-            print (int(one) + int(two))
-        elif action == "minus":
-            print (int(one) - int(two))
-        elif action == "multiply":
-            print (int(one) * int(two))
-
-        else:
-            "error"
+    # while True:
+    #     if action == "exit":
+    #
+    #     action = input("enter the action")
+    #     one = input("enter the first number")
+    #
+    #
+    #
+    #     two = input("enter the second number")
+    #     while not two.isd  z
+    #      c v
+    #         two = input("enter the second number")
+    #
+    #
+    #     if action == "divide":
+    #         print (int(one) / int(two))
+    #     elif action == "plus":
+    #         print (int(one) + int(two))
+    #     elif action == "minus":
+    #         print (int(one) - int(two))
+    #     elif action == "multiply":
+    #         print (int(one) * int(two))
+    #
+    #     else:
+    #         "error"
 
 
-three = 3
+#three = 3
 
-calculator()
+#calculator()
 
 
 
