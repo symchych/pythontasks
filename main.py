@@ -147,94 +147,50 @@ def getstufffromdictionary(list):
 
 
 import sys
-def checking_numbers():
+
+def checking_numbers(number):
     num = ""
-    while not num.isdigit():
-        num = input(f"enter number")
+    while True:
+        import sys
+        num = input(f"enter number{number}: ")
+        if num == "exit":
+            sys.exit("Thank you for using calculator which was written by Myroslav S on 17.12.2022")
         try:
             int(num)
+            if num.isdigit():
+                return int(num)
         except ValueError:
-            continue
-        if num == "exit":
+            print("I said NUMBER!!!")
+
+def calculate(num1, num2):
+    while True:
+        action = input(f"enter action: ")
+        if action == "exit":
             sys.exit("Thank you for using calculator which was written by Myroslav S on 17.12.2022")
-        else:
-            continue
-
-        while not num.isdigit():
-            warning_number = "only numbers allowed"
-            print(warning_number)
-            num = input(f"enter number")
-            if num == "exit":
-                sys.exit("Thank you for using calculator which was written by Myroslav S on 17.12.2022")
-            else:
-                continue
-    return num
-
-
-
-def checking_action(action):
-    proceeding = False
-    while not proceeding:
-        num = input(f"enter {action}")
-        if num == "exit":
-            sys.exit("Thank you for using calculator which was written by Myroslav S on 17.12.2022")
-        elif  num == "divide":
-            return "/"
+        elif action == "divide":
+            return (num1 / num2)
+        elif action == "plus":
+            return (num1 + num2)
+        elif action == "minus":
+            return (num1 - num2)
+        elif action == "multiply":
+            return (num1 * num2)
         else:
             print("You entered a non-existent action. try again!")
-
+            continue
 
 def calculator():
-    warning_number = "only numbers allowed"
-    warning_action = "unknown action"
-    proceeding = False
-    one = 0
-    two = 0
-
-    print(checking_numbers())
-   # checking_numbers("number two")
-
-
-
-
-    # if not isinstance(one, (int, float)):
-    #     print(warning)
-    # if not isinstance(two, (int, float)):
-    #     print(warning)
-    # while True:
-    #     if action == "exit":
-    #
-    #     action = input("enter the action")
-    #     one = input("enter the first number")
-    #
-    #
-    #
-    #     two = input("enter the second number")
-    #     while not two.isd  z
-    #      c v
-    #         two = input("enter the second number")
-    #
-    #
-    #     if action == "divide":
-    #         print (int(one) / int(two))
-    #     elif action == "plus":
-    #         print (int(one) + int(two))
-    #     elif action == "minus":
-    #         print (int(one) - int(two))
-    #     elif action == "multiply":
-    #         print (int(one) * int(two))
-    #
-    #     else:
-    #         "error"
-
-
-#three = 3
-
+    i = 0
+    print("hi")
+    while True:
+        import os
+        print(f"you've made {i} calculations")
+        num1 = checking_numbers(" one")
+        num2 = checking_numbers(" two")
+        print("result: ", calculate(num1, num2))
+        i = i + 1
+        continue
 #calculator()
-
-
-
-
 
 # EXERCISE 6: Python Program 'Guessing Game"
 # Write a program that:
@@ -247,7 +203,24 @@ def calculator():
 # Hint: Use the built-in random module to generate random numbers https://docs.python.org/3.3/library/random.html 1
 #
 # Concepts covered: Built-In Module, User Input, Comparison Operator, While loop
-#
+
+import random
+def guessingame():
+
+    a = (random.randint(1, 9))
+    while True:
+        b = (checking_numbers(""))
+        if int(a) == int(b):
+            print("YOU WON")
+            break
+        elif int(a) < int(b):
+            print("too high")
+            continue
+        elif int(a) > int(b):
+            print("too low")
+            continue
+#guessingame()
+
 # EXERCISE 7: Working with Classes and Objects
 # Imagine you are working in a university and need to write a program, which handles data of students, professors and lectures. To work with this data you create classes and objects:
 #
@@ -302,15 +275,44 @@ def calculator():
 # and following method: "print_name", which can print the full name
 # So you don"t need these properties and method in the other two classes. You can easily inherit these.
 # Change Student and Professor classes to inherit "first_name", "last_name", "age" properties and "print_name" method from the Person class
+
+
 # EXERCISE 8: Working with Dates
 # Write a program that:
 #
 # accepts user"s birthday as input
 # and calculates how many days, hours and minutes are remaining till the birthday
 # prints out the result as a message to the user
+
+
+def birthday_calc():
+    from datetime import datetime
+
+    import time
+    print("what's your birthday? input: d/m")
+    dt1 = "10/20" #input()
+
+    dt2 = datetime.fromtimestamp(time.time()).strftime('%m/%d')
+    d1 = datetime.strptime(dt1, "%m/%d")
+    d2 = datetime.strptime(dt2, "%m/%d")
+
+    # difference between dates in timedelta
+    delta = d2 - d1
+    print(time.time().strftime('%m/%d'))
+    # print(delta)
+    # print(f'Difference is {delta.days} days')
+#birthday_calc()
+from datetime import datetime
+
+import time
+now = datetime.now
+print(now)
+
+
+
 # EXERCISE 9: Working with Spreadsheets
 # Write a program that:
-#
+
 # reads the provided spreadsheet file "employees.xlsx" (see Download section at the bottom) with the following information/columns: "name", "years of experience", "job title", "date of birth"
 # creates a new spreadsheet file "employees_sorted.xlsx" with following info/columns: "name", "years of experience", where the years of experience is sorted in descending order: so the employee name with the most experience in years is on top.
 # EXERCISE 10: Working with REST APIs
