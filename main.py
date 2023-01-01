@@ -286,28 +286,20 @@ def guessingame():
 
 
 def birthday_calc():
-    from datetime import datetime
+    import datetime
+    from datetime import date
+    today = date.today()
+    print("what's your birthday? input: d.m")
+    user_input = (input("")+ '.' + str(today.year + 1)) #input()
+    user_birthday_datetime = datetime.datetime.strptime(user_input, "%d.%m.%Y")
+    now = datetime.datetime.today()
+    delta = abs(user_birthday_datetime - now)
+    days_until = delta.days
+    hours_until = days_until * 24
+    minutes_until = hours_until * 60
 
-    import time
-    print("what's your birthday? input: d/m")
-    dt1 = "10/20" #input()
-
-    dt2 = datetime.fromtimestamp(time.time()).strftime('%m/%d')
-    d1 = datetime.strptime(dt1, "%m/%d")
-    d2 = datetime.strptime(dt2, "%m/%d")
-
-    # difference between dates in timedelta
-    delta = d2 - d1
-    print(time.time().strftime('%m/%d'))
-    # print(delta)
-    # print(f'Difference is {delta.days} days')
+    print("days until: ", days_until, "\nhours until: ",hours_until,"\nminutes until: ", minutes_until, "\n")
 #birthday_calc()
-from datetime import datetime
-
-import time
-now = datetime.now
-print(now)
-
 
 
 # EXERCISE 9: Working with Spreadsheets
@@ -315,6 +307,22 @@ print(now)
 
 # reads the provided spreadsheet file "employees.xlsx" (see Download section at the bottom) with the following information/columns: "name", "years of experience", "job title", "date of birth"
 # creates a new spreadsheet file "employees_sorted.xlsx" with following info/columns: "name", "years of experience", where the years of experience is sorted in descending order: so the employee name with the most experience in years is on top.
+
+def spreadsheet():
+
+
+
+
+    import openpyxl
+    file = openpyxl.load_workbook("inventory.xlsx")
+
+    needed_list =
+
+
+
+
+
+
 # EXERCISE 10: Working with REST APIs
 # Write a program that:
 #
@@ -322,7 +330,11 @@ print(now)
 # gets the projects for a specific GitHub user
 # prints the project names
 # employees.xlsx (8.6 КБ)
-#
+
+
+
+
+
 # 14 - Automation with Python
 # Exercises for Module "Automation with Python"
 # EXERCISE 1: Working with Subnets in AWS
